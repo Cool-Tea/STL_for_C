@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "../inc/vector.h"
 
 int_vector CreateIntVector() {
     int_vector v;
