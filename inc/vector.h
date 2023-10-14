@@ -65,8 +65,8 @@ size_t double_vector_size(double_vector* v);
 size_t int_vector_capacity(int_vector* v);
 size_t double_vector_capacity(double_vector* v);
 
-int int_vector_empty(int_vector* v);
-double double_vector_empty(double_vector* v);
+size_t int_vector_empty(int_vector* v);
+size_t double_vector_empty(double_vector* v);
 
 int int_vector_front(int_vector* v);
 double double_vector_front(double_vector* v);

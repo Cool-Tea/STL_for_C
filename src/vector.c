@@ -114,7 +114,7 @@ void int_vector_pop_back(int_vector* v) {
     if (v->m_size == 0) {
         return;
     }
-    v->m_arr[v->m_size] = 0;
+    v->m_arr[v->m_size - 1] = 0;
     v->m_size--;
     v->m_end--;
 }
@@ -122,7 +122,7 @@ void double_vector_pop_back(double_vector* v) {
     if (v->m_size == 0) {
         return;
     }
-    v->m_arr[v->m_size] = 0;
+    v->m_arr[v->m_size - 1] = 0;
     v->m_size--;
     v->m_end--;
 }
@@ -242,10 +242,10 @@ size_t double_vector_capacity(double_vector* v) {
     return v->m_capacity;
 }
 
-int int_vector_empty(int_vector* v) {
+size_t int_vector_empty(int_vector* v) {
     return v->m_size == 0;
 }
-double double_vector_empty(double_vector* v) {
+size_t double_vector_empty(double_vector* v) {
     return v->m_size == 0;
 }
 
