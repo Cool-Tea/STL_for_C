@@ -1,28 +1,22 @@
 #include <stdio.h>
-#include "vector.h"
+#include "STL_string.h"
 
 int main() {
 
-    int_vector v = CreateIntVector();
-    for (int i = 1; i <= 20; i++) {
-        int_vector_push_back(&v, i);
+    string s = CreateAndSetString("hello world!");
+    string_append_c_str(&s, "Hello string!");
+    string_insert(&s, s.m_begin + 4, 'O');
+    string_erase(&s, s.m_begin + 5);
+    string_replace(&s, s.m_begin + 6, s.m_begin + 10, "STL");
+    for (char* it = s.m_begin; it != s.m_end; it++) {
+        printf("%c", *it);
     }
-    int_vector u = CreateIntVector();
-    int_vector_push_back(&u, 100);
-    int_vector_push_back(&u, 200);
-    int_vector_push_back(&u, 300);
-    int_vector_push_back(&u, 400);
-    int_vector_swap(&v, &u);
-    for (int* it = v.m_begin; it != v.m_end; it++) {
-        printf("%d ", *it);
+    printf("\n");
+    char* re = string_find(&s, "Hello");
+    for (size_t i = 0; i < 6; i++, re++) {
+        printf("%c", *re);
     }
-    puts("\n--------------------------");
-    for (int* it = u.m_begin; it != u.m_end; it++) {
-        printf("%d ", *it);
-    }
-
-    DeleteIntVector(&v);
-    DeleteIntVector(&u);
+    DeleteString(&s);
 
     return 0;
 }
