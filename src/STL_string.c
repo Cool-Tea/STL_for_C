@@ -137,7 +137,34 @@ void string_erase(string* str, char* iterator) {
 }
 
 char* string_find(string* str, const char* c_str) {
-
+    int c_len = strlen(c_str);
+    if (c_len > str->m_size) {
+        return NULL;
+    }
+    //get next arr
+    int* next_arr = (int*)calloc(c_len, sizeof(int));
+    next_arr[0] = -1;
+    if (c_len != 1) {
+        next_arr[1] = 0;
+        for (int i = 2; i < c_len; i++) {
+            int j = next_arr[i - 1];
+            while (j >= 0 && c_str[j] != c_str[i - 1]) {
+                j = next_arr[j];
+            }
+            next_arr[i] = j == -1 ? 0 : next_arr[j] + 1;
+        }
+    }
+    //search for c_str
+    int p_dest = 0, p_src = 0;
+    while (p_dest < str->m_size && p_src < c_len) {
+        if (p_src == -1 || str->m_str[p_dest] == c_str[p_src]) {
+            p_dest++, p_src++;
+        }
+        else {
+            p_src = next_arr[p_src];
+        }
+    }
+    return p_src == c_len ? str->m_begin + p_dest - c_len : NULL;
 }
 
 void string_replace(string* str, char* iterator1, char* iterator2, const char* c_str) {
