@@ -7,4 +7,5 @@ This is the personal project that uses C to stimulate the standard C++ library.
 [Header](./inc/STL_string.h)  
 [Source](./src/STL_string.c)
 # stack
-[Header](./inc/stack.h)
+[Header](./inc/stack.h)  
+[Source](./src/stack.c)
